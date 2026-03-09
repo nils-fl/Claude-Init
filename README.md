@@ -16,7 +16,7 @@ Instead of letting an AI agent run long autonomous loops, development is broken 
 
 Running the script sets up the following structure:
 
-```
+```text
 .ai/
   plan.md
   tasks/
@@ -27,7 +27,7 @@ Running the script sets up the following structure:
 Purpose of the files:
 
 * **plan.md** – high level feature planning
-* **tasks/** – individual implementation tasks
+* **tasks/** – individual implementation tasks (prefixed with timestamps to prevent naming collisions)
 * **repo-map.md** – lightweight overview of the repository structure
 * **context.md** – project knowledge Claude can reuse
 
@@ -55,16 +55,17 @@ bash init-claude-workflow.sh /path/to/repo
 
 Usually you want to commit:
 
-```
+```text
 CLAUDE.md
 .ai/repo-map.md
 ```
 
 And ignore the dynamic planning files:
 
-```
+```text
 .ai/plan.md
 .ai/tasks/
+.ai/tasks-done/
 .ai/context.md
 ```
 
@@ -112,22 +113,23 @@ claude
 
 Then ask Claude to create a plan:
 
-```
+```text
 Create an implementation plan and tasks for adding OAuth login.
 ```
 
 Claude will generate:
 
-```
+```text
 .ai/plan.md
-.ai/tasks/01-auth-service.md
-.ai/tasks/02-oauth-provider.md
+.ai/tasks/20260309-1522-auth-service.md
+.ai/tasks/20260309-1525-oauth-provider.md
 ```
 
 Then implement tasks one by one:
 
-```
-Implement .ai/tasks/01-auth-service.md
+```text
+Implement .ai/tasks/20260309-1522-auth-service.md
 ```
 
 This keeps development **structured and predictable** while avoiding long agent loops.
+``
