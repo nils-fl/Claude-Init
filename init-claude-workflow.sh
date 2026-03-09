@@ -97,6 +97,7 @@ You are orchestrating a small AI development team.
 - Analyze the repository and create an implementation plan.
 - Write the plan to `.ai/plan.md`.
 - Break work into task files in `.ai/tasks/`.
+- **Crucial:** Name task files with a timestamp prefix format `YYYYMMDD-HHMM-` (e.g., `YYYYMMDD-HHMM-setup-db.md`) to avoid numbering collisions.
 - Do not implement code during planning.
 
 ### Coder
@@ -116,7 +117,7 @@ You are orchestrating a small AI development team.
 
 ### Workflow
 1. Planner writes `.ai/plan.md`
-2. Planner creates `.ai/tasks/*.md`
+2. Planner creates `.ai/tasks/YYYYMMDD-HHMM-*.md`
 3. Coder implements ONE task
 4. Tester verifies
 5. Reviewer checks changes
@@ -187,4 +188,4 @@ echo
 echo "Next steps:"
 echo "1. Fill in CLAUDE.md project-specific instructions"
 echo "2. Fill in .ai/repo-map.md"
-echo "3. Start Claude Code and ask it to create a plan"
+echo "3. Start Claude C
