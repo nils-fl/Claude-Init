@@ -18,7 +18,7 @@ if [ ! -d .git ]; then
   echo "[INFO] Continuing anyway."
 fi
 
-mkdir -p .ai/tasks
+mkdir -p .ai/tasks .ai/tasks-done
 
 ensure_file() {
   local file="$1"
@@ -120,7 +120,8 @@ You are orchestrating a small AI development team.
 3. Coder implements ONE task
 4. Tester verifies
 5. Reviewer checks changes
-6. Stop after each task
+6. Move completed tasks from `.ai/tasks/` to `.ai/tasks-done/`
+7. Stop after each task
 
 Never execute the entire feature in a single loop.
 
@@ -165,11 +166,12 @@ if [ ! -f .gitignore ]; then
   cat > .gitignore <<'EOF'
 .ai/plan.md
 .ai/tasks/
+.ai/tasks-done/
 .ai/context.md
 EOF
   echo "[OK] Created .gitignore"
 else
-  for pattern in ".ai/plan.md" ".ai/tasks/" ".ai/context.md"; do
+  for pattern in ".ai/plan.md" ".ai/tasks/" ".ai/tasks-done/" ".ai/context.md"; do
     if ! grep -Fq "$pattern" .gitignore; then
       printf "%s\n" "$pattern" >> .gitignore
       echo "[OK] Added $pattern to .gitignore"
